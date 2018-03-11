@@ -76,7 +76,7 @@ def train_model():
 			cost,accu_rate = net.get_accuracy_rate(batch_x,batch_y)
 			print("Iteration: %i. Train loss %.5f, Minibatch accuracy:"" %.1f%%"
 				  % (i, cost, accu_rate))
-		if i%100==0:
+		if i%200==0:
 			cost, accu_rate = net.get_accuracy_rate(valid_dataset,valid_gender_labels)
 			print("Iteration: %i. Validation loss %.5f, Validation accuracy:"" %.1f%%"
 				  % (i, cost, accu_rate))

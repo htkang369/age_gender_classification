@@ -91,20 +91,22 @@ class Network(object):
                 w1_conv = tf.get_variable('w1_conv', [7,7,self.channel,32], initializer=w_initializer, collections=c_names)
                 b1_conv = tf.get_variable('b1_conv', [1,32], initializer=b_initializer, collections=c_names)
                 h_conv1 = tf.nn.relu(self.conv2d(self.xs, w1_conv,stride=[1,2,2,1],pad='SAME') + b1_conv)  # output size 64*64*32
-                h_pool1 = self.max_pool(h_conv1,k=[1,3,3,1],stride=[1,2,2,1],pad='SAME') # output size 32*32*32
-
+                lrn1 = tf.nn.local_response_normalization(h_conv1, alpha=0.0001, beta=0.75)
+                h_pool1 = self.max_pool(lrn1,k=[1,3,3,1],stride=[1,2,2,1],pad='SAME') # output size 32*32*32
 
             # second layer. collections is used later when assign to target net
             with tf.variable_scope('convol2'):
                 w2_conv = tf.get_variable('w2_conv', [5,5,32,64], initializer=w_initializer, collections=c_names)
                 b2_conv = tf.get_variable('b2_conv', [1,64], initializer=b_initializer, collections=c_names)
                 h_conv2 = tf.nn.relu(self.conv2d(h_pool1, w2_conv,stride=[1,1,1,1],pad='SAME') + b2_conv)  # output size 32*32*64
-                h_pool2 = self.max_pool(h_conv2,k=[1,3,3,1],stride=[1,2,2,1],pad='SAME') # output 16*16*64
+                lrn2 = tf.nn.local_response_normalization(h_conv2, alpha=0.0001, beta=0.75)
+                h_pool2 = self.max_pool(lrn2,k=[1,3,3,1],stride=[1,2,2,1],pad='SAME') # output 16*16*64
 
             with tf.variable_scope('convol3'):
                 w3_conv = tf.get_variable('w2_conv', [3,3,64,64], initializer=w_initializer, collections=c_names)
                 b3_conv = tf.get_variable('b2_conv', [1,64], initializer=b_initializer, collections=c_names)
                 h_conv3 = tf.nn.relu(self.conv2d(h_pool2, w3_conv,stride=[1,1,1,1],pad='SAME') + b3_conv)  # output size 16*16*64
+                # lrn3 = tf.nn.local_response_normalization(h_conv3, alpha=0.0001, beta=0.75)
                 h_pool3 = self.max_pool(h_conv3,k=[1,3,3,1],stride=[1,2,2,1],pad='SAME') # output 8*8*64
 
             # fully connected layer 1
