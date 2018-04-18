@@ -26,3 +26,4 @@ for (x, y, w, h) in faces:
     cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2) #6
 cv2.imshow("Faces found", image)#7
 cv2.waitKey(5000) #8
+
