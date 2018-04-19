@@ -56,7 +56,7 @@ def train_model():
         output_graph=True,
         use_ckpt=False
     )
-    epoch = 10
+    epoch = 400
     iteration = int(total_size / batch_size)
 
     early_stop = 0 #flag of early stopping

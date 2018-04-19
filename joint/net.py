@@ -83,6 +83,12 @@ class Network(object):
         self.labels_gen = tf.placeholder(tf.float32,[None,self.n_output_gen],name='gen_labels')
         self.labels_age = tf.placeholder(tf.float32, [None, self.n_output_age], name='age_labels')
 
+        with tf.variable_scope('multi-para'):
+            self.p = tf.Variable(0.5, name='p')
+            self.q = tf.Variable(0.5, name='q')
+            tf.summary.scalar('multi-para' + 'p', self.p)
+            tf.summary.scalar('multi-para' + 'q', self.q)
+
         with tf.variable_scope('joint_net'):
             # c_names(collections_names) are the collections to store variables
             c_names, w_initializer, b_initializer = \
@@ -157,7 +163,7 @@ class Network(object):
                 b3_fc_gen = tf.get_variable('b3_fc_gen', [1, self.n_output_gen], initializer=b_initializer, collections=c_names)
                 bn_fc3_gen = tf.matmul(h_fc2_gen, w3_fc_gen) + b3_fc_gen
                 # self.q_eval = self.BN_fc(bn_in_fc2, self.n_actions)
-                self.out_gen = tf.nn.softmax(bn_fc3_gen)
+                self.out_gen = tf.multiply(self.q,tf.nn.softmax(bn_fc3_gen))
                 tf.summary.histogram('out_gen' + '/weight', w3_fc_gen)
                 tf.summary.histogram('out_gen' + '/bias', b3_fc_gen)
 
@@ -168,7 +174,7 @@ class Network(object):
                 b3_fc_age = tf.get_variable('b3_fc_age', [1, self.n_output_age], initializer=b_initializer,
                                             collections=c_names)
                 bn_fc2_age = tf.matmul(h_fc2_age, w3_fc_age) + b3_fc_age
-                self.out_age = tf.nn.softmax(bn_fc2_age)
+                self.out_age = tf.multiply(self.p,tf.nn.softmax(bn_fc2_age))
                 tf.summary.histogram('out_age' + '/weight', w3_fc_age)
                 tf.summary.histogram('out_age' + '/bias', b3_fc_age)
 
@@ -201,6 +207,8 @@ class Network(object):
                 5000,  # Decay step.
                 0.98,  # Decay rate.
                 staircase=True)
+            tf.summary.scalar('learning rate',self.learning_rate)
+
             self._train_op = tf.train.MomentumOptimizer(self.learning_rate, 0.9).minimize(self.loss, global_step=self.global_step)
 
             # self._train_op = tf.train.RMSPropOptimizer(self.lr).minimize(self.loss) # normal training
