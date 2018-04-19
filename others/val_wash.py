@@ -10,7 +10,7 @@ def load_data(name):
 	with open(name, 'rb') as f:
 		return pickle.load(f)
 
-path = '/home/htkang/bigdata/age_gender/data/washed_wiki.pkl'
+path = '/home/hengtong/project/age_gender/data/large/wiki_new.pkl'
 data = load_data(path)
 
 temp_train_dataset = data['train_dataset']
@@ -34,3 +34,4 @@ for i in range(len(temp_test_dataset)):
     if np.max(temp_test_dataset[i]) == 0.0:
         print i
         print ('Zero Alert!')
+

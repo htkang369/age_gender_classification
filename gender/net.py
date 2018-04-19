@@ -84,7 +84,7 @@ class Network(object):
             # c_names(collections_names) are the collections to store variables
             c_names, w_initializer, b_initializer = \
                 ['gender_net_params', tf.GraphKeys.GLOBAL_VARIABLES], \
-                tf.truncated_normal_initializer(0., 0.01), tf.constant_initializer(0.01)  # config of layers
+                tf.truncated_normal_initializer(0., 0.1), tf.constant_initializer(0.1)  # config of layers
 
             # first layer. collections is used later when assign to target net
             with tf.variable_scope('convol1'):
@@ -149,11 +149,11 @@ class Network(object):
         with tf.variable_scope('train'):
 
             learning_rate = tf.train.exponential_decay(
-                1e-4,  # Base learning rate.
+                self.lr,  # Base learning rate.
                 #batch * self.batch_size,  # Current index into the dataset.
                 self.global_step,
                 5000,  # Decay step.
-                0.96,  # Decay rate.
+                0.98,  # Decay rate.
                 staircase=True)
             self._train_op = tf.train.MomentumOptimizer(learning_rate, 0.9).minimize(self.loss, global_step=self.global_step)
 
@@ -206,9 +206,11 @@ class Network(object):
         """
         import matplotlib.pyplot as plt
 
+        plt.figure()
         plt.plot(np.arange(len(self.cost_his)), self.cost_his)
         plt.ylabel('Cost')
-        plt.xlabel('training steps')
+        plt.xlabel('Training Steps')
+        plt.grid()
         # plt.show()
         plt.savefig('cost.png')
 

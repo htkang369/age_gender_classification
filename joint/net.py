@@ -198,7 +198,7 @@ class Network(object):
                 self.lr,  # Base learning rate.
                 #batch * self.batch_size,  # Current index into the dataset.
                 self.global_step,
-                6000,  # Decay step.
+                5000,  # Decay step.
                 0.98,  # Decay rate.
                 staircase=True)
             self._train_op = tf.train.MomentumOptimizer(self.learning_rate, 0.9).minimize(self.loss, global_step=self.global_step)
@@ -270,8 +270,9 @@ class Network(object):
 
         plt.plot(np.arange(len(self.cost_his)), self.cost_his)
         plt.ylabel('Cost')
-        plt.xlabel('training steps')
+        plt.xlabel('Training Steps')
         # plt.show()
+        plt.grid()
         plt.savefig('cost.png')
 
 
