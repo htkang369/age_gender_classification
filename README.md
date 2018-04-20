@@ -1,9 +1,5 @@
 
-##########################################################
-
 #Gender and Age Classification using CNNs
-
-##########################################################
 
 ##Overview
 This project implements multi-task learning,using CNN model to classify age and gender as well as train age and gender seperately. 
@@ -12,7 +8,6 @@ This is my final course project for BigData course in University of Florida. Thi
 The dataset used for training and testing for this project is the IMDB-WIKI - collection of unfiltered face images. It contains total 460,723 images of 20,284 celebrities. There are 2 possible gender labels: M, F. As for age labels, we divided the whole age into 4 intervals, since the celebrities’ characteristic, which means you have to process the raw dataset to create your own labels and data. Each image is labelled with the person’s gender and age-range (out of 4 possible ranges mentioned above). From the original dataset I've used mostly frontal face images reducing the dataset size to 30,000 images. The images are subject to occlusion, blur, reflecting real-world circumstances.
 The image link is here: https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/
 
-##########################################################
 
 ##Preprocessing
 
@@ -23,7 +18,6 @@ Create own labels for age and gender.
 Wash dataset, there are several whole zero value images, which needed to be cleaned.
 Resize each image to 128 x 128.
 Transform RGB image to grayscale image.
-##########################################################
 
 ##Model Description
 
@@ -40,8 +34,6 @@ As for multi-task learning, the two tasks share same convolutional layers. After
 We also applied early-stopping method to avoid over-fitting.
 We added L2-regularization terms to avoid over-fitting.
 We added two trainable parameters to balance the two tasks so as to push them converge synchronously. 
-
-##########################################################
 
 ##Instructions for Running the Model
 
@@ -63,7 +55,6 @@ For model detection execute: python detect.py
 Once you have finish training your model, you could execute: joint/test_model.py or joint/real_time.py to get detection and classification result.
 
 Remember to change path for each input file.
-##########################################################
 
 ##Results:
 
