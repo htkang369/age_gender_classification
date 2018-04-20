@@ -1,5 +1,5 @@
 
-# Gender and Age Classification using CNNs
+# Apply CNN models for Gender and Age Classification 
 
 ## Overview
 This project implements multi-task learning,using CNN model to classify age and gender as well as train age and gender seperately. 
