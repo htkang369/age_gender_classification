@@ -1,7 +1,7 @@
 
-#Gender and Age Classification using CNNs
+# Gender and Age Classification using CNNs
 
-##Overview
+## Overview
 This project implements multi-task learning,using CNN model to classify age and gender as well as train age and gender seperately. 
 This is my final course project for BigData course in University of Florida. This project focuses on gender and age classification based on images.
 
@@ -9,7 +9,7 @@ The dataset used for training and testing for this project is the IMDB-WIKI - co
 The image link is here: https://data.vision.ee.ethz.ch/cvl/rrothe/imdb-wiki/
 
 
-##Preprocessing
+## Preprocessing
 
 The following preprocessing was applied to each image:
 
@@ -19,7 +19,7 @@ Wash dataset, there are several whole zero value images, which needed to be clea
 Resize each image to 128 x 128.
 Transform RGB image to grayscale image.
 
-##Model Description
+## Model Description
 
 For Gender Classification, following are the details of the model:
 
@@ -35,7 +35,7 @@ We also applied early-stopping method to avoid over-fitting.
 We added L2-regularization terms to avoid over-fitting.
 We added two trainable parameters to balance the two tasks so as to push them converge synchronously. 
 
-##Instructions for Running the Model
+## Instructions for Running the Model
 
 Ensure the following Python packages are installed on your machine:
 
@@ -56,5 +56,5 @@ Once you have finish training your model, you could execute: joint/test_model.py
 
 Remember to change path for each input file.
 
-##Results:
+## Results:
 
