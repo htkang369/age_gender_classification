@@ -5,25 +5,25 @@ import numpy as np
 
 def transform(age,gender):
     if gender == 1:
-        new_gen = 'Male'
+        new_gen = 'M'
     else:
-        new_gen = 'Female'
+        new_gen = 'F'
 
-    if age==0:
-        new_age = np.random.randint(18,30)
-    elif age==1:
-        new_age = np.random.randint(31,45)
-    elif age==2:
-        new_age = np.random.randint(46,50)
+    if age == 0:
+        new_age = '(20,30)'  # random.randint(20,30)
+    elif age == 1:
+        new_age = '(31,45)'  # random.randint(31,45)
+    elif age == 2:
+        new_age = '(46,50)'  # random.randint(46,50)
     else:
-        new_age = np.random.randint(51,65)
-    return new_gen,new_age
+        new_age = '(51,65)'  # random.randint(51,65)
+    return new_gen, new_age
 
 
 if __name__ =="__main__":
 
     # import test images
-    index = 5
+    index = 1
     imagepath = '/home/htkang/bigdata/age_gender/data/'+str(index)+'.jpg'
     # Create the haar cascade
     faceCascade = cv2.CascadeClassifier("/home/htkang/opencv/data/haarcascades/"
@@ -40,25 +40,19 @@ if __name__ =="__main__":
         minNeighbors=5,
         minSize=(30, 30),
         flags=cv2.cv.CV_HAAR_SCALE_IMAGE
-    )  # 4
-    # print "Found {0} faces!".format(len(faces))  # 5
-    # for (x, y, w, h) in faces:
-    #     cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)  # 6
-    # cv2.imshow("Faces found", image)  # 7
-    # cv2.waitKey(5000)  # 8
+    )
+
 
     i=1
     for (x, y, w, h) in faces:
-        # cv2.circle(image,((x+x+w)/2,(y+y+h)/2),w/2,(0,255,0),2)
         roiimage = gray[y:y + h, x:x + w]
         roiimage = cv2.resize(roiimage, (128, 128), interpolation=cv2.INTER_CUBIC)
         cv2.imwrite('./' + str(index) + '.jpg', roiimage)
-        #cv2.imshow('extracted face' + str(i), roiimage)
-        #cv2.waitKey(i * 200)
         i += 1
 
-    new_path = '/home/htkang/bigdata/age_gender/code/joint/'+str(index)+'.jpg'
+    new_path = '/home/htkang/bigdata/age_gender/code/age_gender/joint/'+str(index)+'.jpg'
     test_image = cv2.imread(new_path)
+
     test_gray = cv2.cvtColor(test_image, cv2.COLOR_BGR2GRAY) # test image
 
     net = Network(
@@ -83,10 +77,10 @@ if __name__ =="__main__":
 
     gender,age = transform(age,gender)
 
-    font = cv2.cv.InitFont(cv2.cv.CV_FONT_HERSHEY_SCRIPT_SIMPLEX, 1, 1, 0, 0, 1)
-    cv2.cv.PutText(image_in, "Age: "+str(age)+" " +"Gender: "+str(gender), (30, 30), font, (0, 255, 0))
+    font = cv2.cv.InitFont(cv2.cv.CV_FONT_HERSHEY_SIMPLEX, 1, 1, 0, 2, 1)
+    cv2.cv.PutText(image_in, "Age: "+str(age)+" " +"Gender: "+str(gender), (20, 20), font, (0, 255, 0))
 
     for (x, y, w, h) in faces:
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)  # 6
     cv2.imshow("Faces found", image)  # 7
-    cv2.waitKey(5000)  # 8
+    cv2.waitKey(50000)  # 8
