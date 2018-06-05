@@ -57,4 +57,4 @@ Once you have finish training your model, you could execute: joint/test_model.py
 Remember to change path for each input file.
 
 ## Results:
-Please see the files in /doc
+Please see the pdf file
