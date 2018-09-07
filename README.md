@@ -59,4 +59,5 @@ Remember to change path for each input file.
 ## Results:
 Please see the pdf file
 ### Pipline
-
+### Training Loss
+<p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/blob/master/pipline.PNG" /></p>
