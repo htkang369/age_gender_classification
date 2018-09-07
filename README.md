@@ -59,4 +59,4 @@ Remember to change path for each input file.
 ## Results:
 Please see the pdf file
 ### Pipline
-<p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/pipline.PNG" /></p>
+<p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/pipline.png" /></p>
