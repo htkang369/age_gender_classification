@@ -57,7 +57,7 @@ Once you have finish training your model, you could execute: joint/test_model.py
 Remember to change path for each input file.
 
 ## Demo
-Please see the pdf file
+
 ### Pipline
 <p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/blob/master/pipline.PNG" /></p>
 
@@ -65,3 +65,5 @@ Please see the pdf file
 <div align="center">
     <img width="32%" src="https://github.com/htkang369/age_gender_classification/blob/master/6.PNG"><img width="40%" src="https://github.com/htkang369/age_gender_classification/blob/master/7.PNG">
 </div>
+
+Please see "final_report.pdf" for details.
