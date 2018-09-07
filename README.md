@@ -66,6 +66,6 @@ Please see the pdf file
 
 ### Results
 <figure class="half">
-    <img src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG">
-    <img src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
+    <img width="50%" src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG">
+    <img width="50%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
 </figure>
