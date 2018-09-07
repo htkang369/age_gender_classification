@@ -62,6 +62,6 @@ Please see the pdf file
 <p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/blob/master/pipline.PNG" /></p>
 
 ### Results
-<figure class="half">
-    <img width="30%" src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG"><img width="30%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
-</figure>
+<div align="center">
+    <img width="40%" src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG"><img width="40%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
+</div>
