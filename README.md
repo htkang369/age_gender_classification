@@ -61,11 +61,8 @@ Please see the pdf file
 ### Pipline
 <p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/blob/master/pipline.PNG" /></p>
 
-### Framework
-<p align="center"><img width="60%" src="https://github.com/htkang369/age_gender_classification/blob/master/1.PNG" /></p>
-
 ### Results
 <figure class="half">
-    <img width="50%" src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG">
-    <img width="50%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
+    <img width="30%" src="https://github.com/htkang369/age_gender_classification/blob/master/4.PNG">
+    <img width="30%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
 </figure>
