@@ -63,5 +63,5 @@ Please see the pdf file
 
 ### Results
 <div align="center">
-    <img width="30%" src="https://github.com/htkang369/age_gender_classification/blob/master/6.PNG"><img width="42%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
+    <img width="32%" src="https://github.com/htkang369/age_gender_classification/blob/master/6.PNG"><img width="40%" src="https://github.com/htkang369/age_gender_classification/blob/master/5.PNG">
 </div>
